@@ -81,10 +81,7 @@ fn new_executor_and_spawner() -> (Executor, Spawner) {
     const MAX_QUEUED_TASKS: usize = 10_000;
     let (task_sender, ready_queue) = sync_channel(MAX_QUEUED_TASKS);
 
-    (
-        Executor { ready_queue },
-        Spawner { task_sender },
-    )
+    (Executor { ready_queue }, Spawner { task_sender })
 }
 
 impl Spawner {
@@ -132,7 +129,6 @@ impl Executor {
 
 fn main() {
     let (executor, spawner) = new_executor_and_spawner();
-
     spawner.spawn(async {
         println!("Amberley's Komputer: howdy!");
 
@@ -140,6 +136,8 @@ fn main() {
 
         println!("Amberley's Komputer: done!");
     });
+
+    println!("Amberley's Komputer: hey hey");
 
     drop(spawner);
 
