@@ -81,3 +81,25 @@ Uri::from_static("ws://127.0.0.1:8080")
 Both sides must use the same port. If the server uses port 8080 but the client still connects to port 2000, the client will fail to connect.
 
 The protocol used is WebSocket, shown by the ws:// prefix in the client URI.
+
+## Experiment 2.3: Small changes, add IP and Port
+
+In this experiment, I modified the server so that each broadcasted message includes the sender's IP address and port.
+
+I changed this line:
+
+```rust
+bcast_tx.send(text.to_string())?;
+```
+
+into:
+```rust
+bcast_tx.send(format!("{addr}: {text}"))?;
+```
+
+The variable addr comes from the TCP connection address. It contains the client IP address and port.
+After this change, when a client sends a message, the other clients can see where the message came from. For example:
+
+![image3](images/image3.png) 
+
+The port number can be different for each client because each connection uses a different temporary client port.
