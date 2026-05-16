@@ -36,3 +36,27 @@ When `drop(spawner)` is used, the sender is closed. This tells the executor that
 When `drop(spawner)` is removed, the sender is still alive, so the executor keeps waiting for possible future tasks forever.
 
 ![image2](images/image2.png) 
+
+## Experiment 2.1: Original code, and how it run
+
+In this experiment, I created a broadcast chat application using Tokio and WebSocket.
+
+The application has two binaries:
+- `server.rs` as the chat server
+- `client.rs` as the chat client
+
+The server is run using:
+
+```bash
+cargo run --bin server
+```
+
+The client is run using:
+
+```bash
+cargo run --bin client
+```
+
+I ran one server and three clients. When one client sends a message, the server receives the message and broadcasts it to all connected clients.
+
+This works because the server uses a broadcast channel. Every connected client subscribes to the same broadcast sender. When a message is received from one client, the server sends it into the broadcast channel, then each client receives the message from the channel and sends it through its WebSocket connection.
