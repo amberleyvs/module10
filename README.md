@@ -60,3 +60,24 @@ cargo run --bin client
 I ran one server and three clients. When one client sends a message, the server receives the message and broadcasts it to all connected clients.
 
 This works because the server uses a broadcast channel. Every connected client subscribes to the same broadcast sender. When a message is received from one client, the server sends it into the broadcast channel, then each client receives the message from the channel and sends it through its WebSocket connection.
+
+## Experiment 2.2: Modifying port
+
+I changed the WebSocket port from `2000` to `8080`.
+
+The port must be changed in both the server and the client.
+
+In `server.rs`, the server listens on this address:
+
+```rust
+TcpListener::bind("127.0.0.1:8080")
+```
+
+In `client.rs`, the client connects to this WebSocket URI:
+```rust
+Uri::from_static("ws://127.0.0.1:8080")
+```
+
+Both sides must use the same port. If the server uses port 8080 but the client still connects to port 2000, the client will fail to connect.
+
+The protocol used is WebSocket, shown by the ws:// prefix in the client URI.
