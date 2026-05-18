@@ -137,3 +137,21 @@ Because the original project is old, I also had to adjust the Rust/WebAssembly b
 ![YewChat Login Page](images/image4.png)
 
 ![YewChat Server and Client Running](images/image5.png)
+
+### Experiment 3.2: Be Creative!
+
+In this experiment, I customized the YewChat web client interface to make it more creative and visually polished.
+
+The changes I made include:
+- Changed the font to Poppins.
+- Used a pastel color palette: `#CFF5E7`, `#BCEAD5`, `#E8F3D6`, `#FDF6BD`, and `#FFD6A5`.
+- Added a soft gradient background using the selected color palette.
+- Redesigned the login page with a centered glass-style card.
+- Redesigned the chat page with a cleaner layout, simple conversation bubbles, and a message input area.
+- Removed complex visual elements so the interface looks simpler and easier to read.
+
+The web client is still functional. The user can open the login page, enter a nickname, click the join button, and navigate to the chat page.
+
+![Creative Login Page](images/image6.png)
+
+![Creative Chat Page](images/image7.png)

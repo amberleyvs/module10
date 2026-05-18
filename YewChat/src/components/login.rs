@@ -29,29 +29,137 @@ pub fn login() -> Html {
     };
 
     html! {
-        <div class="bg-gray-800 flex w-screen h-screen">
-            <div class="container mx-auto flex flex-col justify-center items-center">
-                <h1 class="text-white text-4xl font-bold mb-4">{"Amberley's WebChat"}</h1>
-                <p class="text-gray-300 mb-6">{"Rust + Yew WebSocket Chat"}</p>
+        <div style="
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            width: 100vw;
+            background: linear-gradient(135deg, #CFF5E7 0%, #BCEAD5 25%, #E8F3D6 50%, #FDF6BD 75%, #FFD6A5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2f3e46;
+        ">
+            <main style="
+                width: 100%;
+                max-width: 520px;
+                padding: 24px;
+            ">
+                <div style="
+                    background: rgba(255, 255, 255, 0.72);
+                    border-radius: 28px;
+                    padding: 44px;
+                    box-shadow: 0 30px 70px rgba(47, 62, 70, 0.14);
+                    border: 1px solid rgba(255, 255, 255, 0.75);
+                    text-align: center;
+                    backdrop-filter: blur(18px);
+                ">
+                    <div style="
+                        width: 72px;
+                        height: 72px;
+                        margin: 0 auto 24px auto;
+                        border-radius: 24px;
+                        background: linear-gradient(135deg, #BCEAD5, #FFD6A5);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 32px;
+                        font-weight: 800;
+                        color: #2f3e46;
+                        box-shadow: 0 16px 32px rgba(47, 62, 70, 0.12);
+                    ">
+                        {"C"}
+                    </div>
 
-                <form class="m-4 flex">
-                    <input
-                        {oninput}
-                        class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
-                        placeholder="Username"
-                    />
+                    <h1 style="
+                        font-size: 34px;
+                        line-height: 1.2;
+                        font-weight: 800;
+                        margin: 0 0 12px 0;
+                        color: #2f3e46;
+                    ">
+                        {"Start chatting!"}
+                    </h1>
 
-                    <Link<Route> to={Route::Chat}>
-                        <button
-                            {onclick}
-                            disabled={username.len() < 1}
-                            class="px-8 rounded-r-lg bg-violet-600 text-white font-bold p-4 uppercase border-violet-600 border-t border-b border-r"
-                        >
-                            {"Go Chatting!"}
-                        </button>
-                    </Link<Route>>
-                </form>
-            </div>
+                    <p style="
+                        font-size: 15px;
+                        line-height: 1.7;
+                        font-weight: 500;
+                        color: #52796f;
+                        margin: 0 0 32px 0;
+                    ">
+                        {"Enter your nickname"}
+                    </p>
+
+                    <form style="
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 18px;
+                        text-align: left;
+                    ">
+                        <label style="
+                            font-size: 12px;
+                            font-weight: 800;
+                            letter-spacing: 0.08em;
+                            color: #52796f;
+                            margin-left: 4px;
+                        ">
+                            {"NICKNAME"}
+                        </label>
+
+                        <input
+                            {oninput}
+                            style="
+                                width: 100%;
+                                box-sizing: border-box;
+                                border: none;
+                                outline: none;
+                                border-radius: 18px;
+                                padding: 18px 20px;
+                                font-family: 'Poppins', sans-serif;
+                                font-size: 15px;
+                                font-weight: 500;
+                                color: #2f3e46;
+                                background: rgba(255, 255, 255, 0.88);
+                                box-shadow: inset 0 0 0 1px rgba(82, 121, 111, 0.18);
+                            "
+                            placeholder="Type your nickname..."
+                        />
+
+                        <Link<Route> to={Route::Chat}>
+                            <button
+                                {onclick}
+                                disabled={username.len() < 1}
+                                style="
+                                    width: 100%;
+                                    border: none;
+                                    border-radius: 18px;
+                                    padding: 18px 24px;
+                                    background: #2f3e46;
+                                    color: white;
+                                    font-family: 'Poppins', sans-serif;
+                                    font-size: 15px;
+                                    font-weight: 800;
+                                    cursor: pointer;
+                                    box-shadow: 0 18px 36px rgba(47, 62, 70, 0.16);
+                                "
+                            >
+                                {"JOIN CHAT  >"}
+                            </button>
+                        </Link<Route>>
+                    </form>
+
+                    <div style="
+                        margin-top: 32px;
+                        color: #52796f;
+                        font-size: 12px;
+                        font-weight: 700;
+                        letter-spacing: 0.05em;
+                    ">
+                        {""}
+                    </div>
+                </div>
+            </main>
         </div>
     }
 }
