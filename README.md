@@ -155,3 +155,30 @@ The web client is still functional. The user can open the login page, enter a ni
 ![Creative Login Page](images/image6.png)
 
 ![Creative Chat Page](images/image7.png)
+
+### Bonus: Rust Websocket server for YewChat!
+
+In this bonus experiment, I replaced the JavaScript WebSocket server from Tutorial 3 with a Rust WebSocket server based on the server from Tutorial 2.
+
+The original YewChat server uses JavaScript, while Tutorial 2 already has a Rust WebSocket server. To make the Rust server work with YewChat, I created a new binary named `yew_server.rs` inside the `chat-async` project.
+
+The main adjustment is the message format. Tutorial 2 originally used plain text messages, while YewChat communicates using JSON-formatted text messages. Because of that, the Rust server was modified to deserialize incoming JSON using `serde_json`, process the message type, and serialize the response back into JSON before broadcasting it.
+
+The Rust server is run using:
+
+```bash
+cd chat-async
+cargo run --bin yew_server
+```
+
+The YewChat client is run using:
+```bash
+cd YewChat
+npm start
+```
+
+This change is successful because the YewChat client can still run while the WebSocket server on port 8080 is handled by Rust instead of JavaScript.
+
+I prefer the Rust version because it is more consistent with the async programming topic in this module. It also helps me understand how WebSocket connections, broadcast channels, JSON serialization, and asynchronous tasks work directly in Rust.
+
+![Rust Websocket](images/image8.png)
