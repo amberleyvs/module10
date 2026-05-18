@@ -7,3 +7,9 @@ target/
 pkg/
 dist/
 .DS_Store
+
+node_modules/
+target/
+pkg/
+dist/
+.DS_Store
