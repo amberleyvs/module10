@@ -103,3 +103,37 @@ After this change, when a client sends a message, the other clients can see wher
 ![image3](images/image3.png) 
 
 The port number can be different for each client because each connection uses a different temporary client port.
+
+
+## WebChat using Yew
+
+### Experiment 3.1: Original code
+
+In this experiment, I cloned and ran the original YewChat client and the SimpleWebsocketServer.
+
+The WebSocket server is run using:
+
+```bash
+cd SimpleWebsocketServer
+npm install
+npm start
+```
+The server listens on port 8080.
+
+The YewChat client is run using:
+```bash
+cd YewChat
+npm install
+npm start
+```
+The client is opened from:
+```Plain text
+http://localhost:8000/
+```
+After running both projects, the YewChat login page appeared in the browser. This shows that the web client can run together with the WebSocket server setup.
+
+Because the original project is old, I also had to adjust the Rust/WebAssembly build configuration and update webpack dependencies so it can run with the current toolchain.
+
+![YewChat Login Page](images/image4.png)
+
+![YewChat Server and Client Running](images/image5.png)

@@ -1,2 +1,9 @@
 /target
 .DS_Store
+
+# build artifacts
+node_modules/
+target/
+pkg/
+dist/
+.DS_Store
